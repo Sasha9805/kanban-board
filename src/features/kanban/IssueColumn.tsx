@@ -37,7 +37,7 @@ export const IssueColumn = ({ title, issues }: ColumnProps) => {
 			className="h-100 d-flex flex-column"
 		>
 			<h3 className="text-center text-uppercase">{title}</h3>
-			<div className="d-flex flex-column flex-grow-1 gap-4 p-4 bg-info">
+			<div className="d-flex flex-column flex-grow-1 gap-4 p-4 bg-info" data-testid={title}>
 				{issues.map((issue, index) => (
 					<IssueCard
 						key={issue.id}

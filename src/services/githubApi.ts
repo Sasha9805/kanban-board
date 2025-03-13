@@ -11,25 +11,19 @@ export const fetchIssuesFromGitHub = async (
 		);
 		return transformIssues(response.data);
 	} catch (error: unknown) {
-		// Обработка ошибки с проверкой типа
 		if (axios.isAxiosError(error)) {
-			// Проверка, что ошибка является axios ошибкой
 			if (error.response) {
-				// Сервер вернул ошибку (например, 404 или 500)
 				throw new Error(
 					`Ошибка загрузки данных: ${error.response.status} ${error.response.statusText}`
 				);
 			} else if (error.request) {
-				// Нет ответа от сервера
 				throw new Error("Нет ответа от сервера");
 			}
 		}
 
-		// Для прочих ошибок, например, если ошибка не от axios
 		if (error instanceof Error) {
 			throw new Error(`Ошибка: ${error.message}`);
 		} else {
-			// В случае если ошибка не является экземпляром Error или axios
 			throw new Error("Неизвестная ошибка");
 		}
 	}
@@ -63,7 +57,6 @@ export const fetchRepoStars = async (
 	}
 };
 
-// Трансформация данных issues
 export const transformIssues = (data: IGitHubIssueResponse[]): IIssue[] => {
 	return data.map((issue) => ({
 		id: issue.id,

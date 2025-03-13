@@ -1,16 +1,25 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "skipLibCheck": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"skipLibCheck": true,
+		"typeRoots": [
+			"node_modules/@types",
+			"node_modules",
+			"node_modules/@testing-library",
+			"node_modules/@testing-library/jest-dom"
+		],
+		"types": ["node", "vitest/globals", "jest-dom"],
+    "allowJs": true,
+    "checkJs": true,
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+	"files": [],
+	"references": [
+		{ "path": "./tsconfig.app.json" },
+		{ "path": "./tsconfig.node.json" }
+	]
 }

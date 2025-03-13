@@ -7,6 +7,7 @@ const Loader = () => {
 			height="200px"
 			viewBox="0 0 100 100"
 			preserveAspectRatio="xMidYMid"
+			data-testid="loader"
 		>
 			<g transform="translate(80,50)">
 				<g transform="rotate(0)">

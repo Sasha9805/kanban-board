@@ -3,25 +3,22 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { IKanbanBoard } from "../shared/types";
 import { GITHUB_REG } from "../config";
 
-// Подключаем плагин для работы с относительным временем
 dayjs.extend(relativeTime);
 
 export const formatDateAgo = (dateString: string): string => {
-	return dayjs(dateString).fromNow(); // Преобразует дату в формат "X ago"
+	return dayjs(dateString).fromNow();
 };
 
-// Функция для извлечения организации и репозитория из URL GitHub
 export const extractRepoInfo = (repoUrl: string): [string, string] | null => {
 	const match = repoUrl.match(GITHUB_REG);
 
 	if (match) {
-		return [match[2], match[3]]; // [organization, repository]
+		return [match[2], match[3]];
 	}
 
-	return null; // Если URL не подходит
+	return null;
 };
 
-// Запись состояния в localStorage
 export const saveToLocalStorage = (key: string, state: IKanbanBoard) => {
 	try {
 		localStorage.setItem(key, JSON.stringify(state));
@@ -30,7 +27,6 @@ export const saveToLocalStorage = (key: string, state: IKanbanBoard) => {
 	}
 };
 
-// Загружаем состояние из localStorage
 export const loadFromLocalStorage = (key: string): IKanbanBoard | null => {
 	try {
 		const savedState = localStorage.getItem(key);
@@ -41,7 +37,6 @@ export const loadFromLocalStorage = (key: string): IKanbanBoard | null => {
 	}
 };
 
-// Проверка состояния из localStorage
 export const checkOrganizationAndRepoInLocalStorage = (
 	key: string,
 	organization: string,
@@ -54,7 +49,6 @@ export const checkOrganizationAndRepoInLocalStorage = (
 	return null;
 };
 
-// Преобразование числа к формату с "К" в конце
 export const formatNumberToK = (number: number): string => {
 	const formatter = new Intl.NumberFormat("en", {
 		notation: "compact",
