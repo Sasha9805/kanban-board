@@ -71,6 +71,11 @@ test("successful data receiving", async () => {
 		name: /load issues/i,
 	});
 
+	const notFoundImg = screen.getByRole("img", {
+		name: "not-found-data",
+	});
+	expect(notFoundImg).toBeInTheDocument();
+
 	await user.clear(repoInput);
 	await user.type(repoInput, "https://github.com/facebook/react");
 	await user.click(loadBtn);
